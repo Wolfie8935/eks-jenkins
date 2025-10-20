@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-eks-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jenkins-eks-demo
+  template:
+    metadata:
+      labels:
+        app: jenkins-eks-demo
+    spec:
+      containers:
+      - name: app
+        image: REPLACE_WITH_ECR_IMAGE_URI:latest
+        ports:
+        - containerPort: 3000
